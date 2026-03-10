@@ -1,0 +1,30 @@
+{
+  "name": "openclaw-cron-blueprints",
+  "version": "0.1.0",
+  "description": "Generate safe OpenClaw cron blueprints with timezone-aware output.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "ocb": "dist/cli.js"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "luxon": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.7.1",
+    "@types/node": "^25.4.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  }
+}
