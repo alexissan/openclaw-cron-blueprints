@@ -18,9 +18,14 @@ program
   .description('Generate one-shot reminder templates for OpenClaw cron payloads')
   .requiredOption('--text <text>', 'Reminder text')
   .requiredOption('--at <datetime>', 'Datetime in yyyy-MM-dd HH:mm format')
-  .requiredOption('--tz <timezone>', 'IANA timezone, e.g. Atlantic/Canary')
+  .option('--tz <timezone>', 'IANA timezone, e.g. Atlantic/Canary (defaults to process.env.OCB_DEFAULT_TZ)')
   .action((opts) => {
-    const out = buildReminderBlueprint({ text: opts.text, at: opts.at, tz: opts.tz });
+    const tz = opts.tz || process.env.OCB_DEFAULT_TZ;
+    if (!tz) {
+      console.error('Error: --tz is required when OCB_DEFAULT_TZ is not set.');
+      process.exit(1);
+    }
+    const out = buildReminderBlueprint({ text: opts.text, at: opts.at, tz });
     console.log(JSON.stringify(out, null, 2));
   });
 

@@ -29,6 +29,8 @@ ocb --help
 
 ## Commands
 
+> Tip: set `OCB_DEFAULT_TZ=Atlantic/Canary` in your shell and `ocb` will use that timezone as a default when you omit `--tz`.
+
 ### 1) reminder
 
 ```bash
